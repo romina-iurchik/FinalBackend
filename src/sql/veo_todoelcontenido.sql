@@ -1,5 +1,5 @@
 SELECT
-  c.idContenido,
+  c.idCatalogo,
   c.titulo,
   c.resumen,
   c.temporadas,
@@ -11,20 +11,20 @@ SELECT
   GROUP_CONCAT(DISTINCT tg.tagName ORDER BY tg.tagName SEPARATOR ', ') AS tags,
   -- Actores concatenados separados por coma
   GROUP_CONCAT(DISTINCT a.actorName ORDER BY a.actorName SEPARATOR ', ') AS actores
-FROM Contenido c
+FROM Catalogo c
 -- Join con Categoria
-JOIN Categoria cat ON c.idCategoriaContenido = cat.idCategoria
+JOIN Categoria cat ON c.idCategoriaCatalogo = cat.idCategoria
 -- Join con Genero
-JOIN Genero gen ON c.idGeneroContenido = gen.idGenero
+JOIN Genero gen ON c.idGeneroCatalogo = gen.idGenero
 -- Join con Poster
-JOIN Poster p ON c.idPosterContenido = p.idPoster
+JOIN Poster p ON c.idPosterCatalogo = p.idPoster
 -- Join con Trailer
-JOIN Trailer t ON c.idTrailerContenido = t.idTrailer
--- Join con tabla intermedia ContenidoTag + Tag para obtener tags
-LEFT JOIN ContenidoTag ct ON c.idContenido = ct.idContenido
+JOIN Trailer t ON c.idTrailerCatalogo = t.idTrailer
+-- Join con tabla intermedia CatalogoTag + Tag para obtener tags
+LEFT JOIN CatalogoTag ct ON c.idCatalogo = ct.idCatalogo
 LEFT JOIN Tag tg ON ct.idTag = tg.idTag
 -- Join con tabla intermedia Reparto + Actor para obtener actores
-LEFT JOIN Reparto r ON c.idContenido = r.idContenido
+LEFT JOIN Reparto r ON c.idCatalogo = r.idCatalogo
 LEFT JOIN Actor a ON r.idActor = a.idActor
-GROUP BY c.idContenido, c.titulo, c.resumen, c.temporadas, cat.categoriaName, gen.generoName, p.postername, t.trailername
-ORDER BY c.idContenido;
+GROUP BY c.idCatalogo, c.titulo, c.resumen, c.temporadas, cat.categoriaName, gen.generoName, p.postername, t.trailername
+ORDER BY c.idCatalogo;
