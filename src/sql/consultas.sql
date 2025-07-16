@@ -73,10 +73,12 @@ JOIN Genero g ON c.idGeneroCatalogo = g.idGenero;
 
 -- 7. Ver solo la categoría "Películas": mostrar título en mayúsculas, género en mayúsculas, tags separados por coma, duración y enlace al tráiler.
 
-SELECT UPPER(c.titulo) AS titulo,
-       UPPER(g.generoName) AS genero,
-       GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
-       tr.trailerName AS trailer
+SELECT 
+    UPPER(c.titulo) AS titulo,
+    UPPER(g.generoName) AS genero,
+    GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
+    CONCAT(c.duracion, ' minutos') AS duracion,
+    tr.trailerName AS trailer
 FROM Catalogo c
 JOIN Genero g ON c.idGeneroCatalogo = g.idGenero
 JOIN Categoria cat ON c.idCategoriaCatalogo = cat.idCategoria
@@ -84,8 +86,7 @@ LEFT JOIN CatalogoTag ct ON c.idCatalogo = ct.idCatalogo
 LEFT JOIN Tag t ON ct.idTag = t.idTag
 JOIN Trailer tr ON c.idTrailerCatalogo = tr.idTrailer
 WHERE cat.categoriaName = 'Película'
-GROUP BY c.idCatalogo;
-
+GROUP BY c.idCatalogo, c.titulo, g.generoName, c.duracion, tr.trailerName;
 
 
 -- 8. Ver solo la categoría "Series": mostrar título en mayúsculas, género en mayúsculas, tags separados por coma, cantidad de temporadas, tráiler y resumen.
