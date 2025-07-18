@@ -1,6 +1,7 @@
-//SE USO IA 
+//SE USO IA
+
 function escapeString(str) {
-  if (!str) return '';
+  if (!str) return "";
   return str.replace(/'/g, "''");
 }
 
@@ -15,17 +16,23 @@ function generateInsertSQL(contenido) {
     resumen,
     temporadas,
     reparto,
-    trailer
+    trailer,
+    duracion,
+    busqueda,
   } = contenido;
 
   // Convertir temporadas a número o NULL si no es válido
+
   const temporadasNum = parseInt(temporadas);
-  const temporadasSQL = Number.isNaN(temporadasNum) ? 'NULL' : temporadasNum;
+  const temporadasSQL = Number.isNaN(temporadasNum) ? "NULL" : temporadasNum;
 
-  const tagsArray = tags.split(',').map(tag => tag.trim());
-  const actoresArray = reparto.split(',').map(actor => actor.trim());
+  const duracionSQL = duracion ? `'${escapeString(duracion)}'` : "NULL";
+  const busquedaSQL = busqueda ? `'${escapeString(busqueda)}'` : "NULL";
 
-  let sql = '';
+  const tagsArray = tags.split(",").map((tag) => tag.trim());
+  const actoresArray = reparto.split(",").map((actor) => actor.trim());
+
+  let sql = "";
 
   // Insertar Categoria
   sql += `
@@ -66,16 +73,24 @@ WHERE NOT EXISTS (
   // Obtener IDs FK
   sql += `
 -- Obtener IDs FK
-SET @idCategoria = (SELECT idCategoria FROM Categoria WHERE categoriaName = '${escapeString(categoria)}');
-SET @idGenero = (SELECT idGenero FROM Genero WHERE generoName = '${escapeString(genero)}');
-SET @idPoster = (SELECT idPoster FROM Poster WHERE postername = '${escapeString(poster)}');
-SET @idTrailer = (SELECT idTrailer FROM Trailer WHERE trailername = '${escapeString(trailer)}');
-SET @idContenido = ${id};\n`;
+SET @idCategoria = (SELECT idCategoria FROM Categoria WHERE categoriaName = '${escapeString(
+    categoria
+  )}');
+SET @idGenero = (SELECT idGenero FROM Genero WHERE generoName = '${escapeString(
+    genero
+  )}');
+SET @idPoster = (SELECT idPoster FROM Poster WHERE postername = '${escapeString(
+    poster
+  )}');
+SET @idTrailer = (SELECT idTrailer FROM Trailer WHERE trailername = '${escapeString(
+    trailer
+  )}');
+SET @idCatalogo = ${id};\n`;
 
-  // Insertar Contenido
+  // Insertar en Catalogo
   sql += `
--- Insertar Contenido
-INSERT INTO Contenido (idContenido, resumen, temporadas, idPosterContenido, idTrailerContenido, idCategoriaContenido, idGeneroContenido, titulo)
+-- Insertar en Catálogo
+INSERT INTO Catalogo (idCatalogo, resumen, temporadas, idPosterCatalogo, idTrailerCatalogo, idCategoriaCatalogo, idGeneroCatalogo, titulo, duracion, busqueda)
 VALUES (
   ${id},
   '${escapeString(resumen)}',
@@ -84,31 +99,39 @@ VALUES (
   @idTrailer,
   @idCategoria,
   @idGenero,
-  '${escapeString(titulo)}'
+  '${escapeString(titulo)}',
+  ${duracionSQL},
+  ${busquedaSQL}
 );\n`;
 
   // Insertar Tags y asociarlos
   sql += `-- Insertar Tags y asociarlos\n`;
-  tagsArray.forEach(tag => {
+  tagsArray.forEach((tag) => {
     sql += `
 INSERT INTO Tag (tagName)
 SELECT * FROM (SELECT '${escapeString(tag)}') AS tmp
-WHERE NOT EXISTS (SELECT 1 FROM Tag WHERE tagName = '${escapeString(tag)}') LIMIT 1;
+WHERE NOT EXISTS (SELECT 1 FROM Tag WHERE tagName = '${escapeString(
+      tag
+    )}') LIMIT 1;
 
-INSERT INTO ContenidoTag (idContenido, idTag)
-SELECT @idContenido, idTag FROM Tag WHERE tagName = '${escapeString(tag)}';\n`;
+INSERT INTO CatalogoTag (idCatalogo, idTag)
+SELECT @idCatalogo, idTag FROM Tag WHERE tagName = '${escapeString(tag)}';\n`;
   });
 
   // Insertar Actores y asociarlos
   sql += `-- Insertar Actores y asociarlos\n`;
-  actoresArray.forEach(actor => {
+  actoresArray.forEach((actor) => {
     sql += `
 INSERT INTO Actor (actorName)
 SELECT * FROM (SELECT '${escapeString(actor)}') AS tmp
-WHERE NOT EXISTS (SELECT 1 FROM Actor WHERE actorName = '${escapeString(actor)}') LIMIT 1;
+WHERE NOT EXISTS (SELECT 1 FROM Actor WHERE actorName = '${escapeString(
+      actor
+    )}') LIMIT 1;
 
-INSERT INTO Reparto (idContenido, idActor)
-SELECT @idContenido, idActor FROM Actor WHERE actorName = '${escapeString(actor)}';\n`;
+INSERT INTO RepartoCatalogo (idCatalogo, idActor)
+SELECT @idCatalogo, idActor FROM Actor WHERE actorName = '${escapeString(
+      actor
+    )}';\n`;
   });
 
   return sql;

@@ -1,0 +1,30 @@
+{
+  "name": "finalbackend",
+  "version": "1.0.0",
+  "description": "- 🎐 Beverly J.L. Gonzalez\r - 🎐 Romina Iurchik\r - 🎐 Mariana Jobse",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romina-iurchik/FinalBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romina-iurchik/FinalBackend/issues"
+  },
+  "homepage": "https://github.com/romina-iurchik/FinalBackend#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7"
+  }
+}
