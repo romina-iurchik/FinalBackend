@@ -4,8 +4,10 @@ require("dotenv").config();
 const PORT = 3010 || process.env.PORT;
 const cors = require("cors");
 const { authenticate } = require("./src/config/sequelize");
+const catalogoRoutes = require("./src/routes/CatalogoRoutes");
 
 app.use(express.json());
+app.use("/api/catalogo", catalogoRoutes);
 
 //Importar body parser
 const bodyParser = require("body-parser");
