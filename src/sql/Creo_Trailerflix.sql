@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Poster` (
 
 CREATE TABLE IF NOT EXISTS `Trailer` (
     `idTrailer` int AUTO_INCREMENT NOT NULL UNIQUE,
-    `trailerName` text NOT NULL,
+    `trailerName` varchar(255) NOT NULL,
     PRIMARY KEY (`idTrailer`)
 );
 
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `Actor` (
 
 CREATE TABLE IF NOT EXISTS `Catalogo` (
     `idCatalogo` int AUTO_INCREMENT NOT NULL UNIQUE,
-    `resumen` text NOT NULL,
+    `resumen` TEXT NOT NULL,
+    `duracion` varchar(50) NULL DEFAULT NULL,
+    `busqueda` varchar(255) NULL DEFAULT NULL,
     `temporadas` int NULL DEFAULT NULL,
     `idPosterCatalogo` int NOT NULL,
     `idTrailerCatalogo` int NOT NULL,
