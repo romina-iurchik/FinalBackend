@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `Catalogo` (
     `idTrailerCatalogo` int NOT NULL,
     `idCategoriaCatalogo` int NOT NULL,
     `idGeneroCatalogo` int NOT NULL,
-    `titulo` varchar(255),
+    `titulo` varchar(255) NOT NULL,
     PRIMARY KEY (`idCatalogo`)
 );
 
