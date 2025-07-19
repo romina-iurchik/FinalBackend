@@ -92,11 +92,11 @@ GROUP BY c.idCatalogo, c.titulo, g.generoName, c.duracion, tr.trailerName;
 -- 8. Ver solo la categoría "Series": mostrar título en mayúsculas, género en mayúsculas, tags separados por coma, cantidad de temporadas, tráiler y resumen.
 
 SELECT UPPER(c.titulo) AS titulo,
-       UPPER(g.generoName) AS genero,
-       GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
-       c.temporadas AS temporadas,
-       tr.trailerName AS trailer,
-       c.resumen AS resumen
+    UPPER(g.generoName) AS genero,
+    GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
+    c.temporadas AS temporadas,
+    tr.trailerName AS trailer,
+    c.resumen AS resumen
 FROM Catalogo c
 JOIN Genero g ON c.idGeneroCatalogo = g.idGenero
 JOIN Categoria cat ON c.idCategoriaCatalogo = cat.idCategoria

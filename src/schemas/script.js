@@ -1,5 +1,3 @@
-//SE USO IA
-
 const fs = require('fs');
 const generateInsertSQL = require('./generateInsertSQL');
 
