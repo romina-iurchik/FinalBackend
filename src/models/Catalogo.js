@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/sequelize");
 
+
 const Catalogo = sequelize.define(
   "Catalogo",
   {
@@ -13,7 +14,7 @@ const Catalogo = sequelize.define(
     },
     resumen: { type: DataTypes.TEXT, allowNull: false },
     duracion: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.TIME,
       allowNull: true,
       defaultValue: null,
     },
@@ -36,6 +37,12 @@ const Catalogo = sequelize.define(
   },
   { tableName: "Catalogo", timestamps: false }
 );
+
+
+
+
+
+
 module.exports = Catalogo;
 
 // `idCatalogo` int AUTO_INCREMENT NOT NULL UNIQUE,
