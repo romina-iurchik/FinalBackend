@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/sequelize");
 
+
 const Tag = sequelize.define(
   "Tag",
   {
@@ -15,6 +16,12 @@ const Tag = sequelize.define(
   },
   { tableName: "Tag", timestamps: false }
 );
+
+
+
+
+
+
 module.exports = Tag;
 
 //  `idTag` int AUTO_INCREMENT NOT NULL UNIQUE,
