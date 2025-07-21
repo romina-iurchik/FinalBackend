@@ -175,3 +175,37 @@ GET http://localhost:3010/catalogo
 ```
 
 ---
+
+### 🔍 GET `/categoria/:categoria`
+
+**Request:**
+
+```
+GET http://localhost:3010/categoria/:categoria
+```
+
+**Parámetros**: `categoria`  — Categoria del contenido buscado.
+
+**Respuesta:**
+
+- `200 OK`: Búsqueda exitosa.
+- `500 Internal Server Error`: Error al conectarse a la base de datos.
+
+```json
+[
+  {
+    "titulo": "The Crown",
+    "Categoria": {
+      "categoriaName": "Serie"
+    }
+  },
+  {
+    "titulo": "Riverdale",
+    "Categoria": {
+      "categoriaName": "Serie"
+    }
+  },
+  ...
+]
+```
+
