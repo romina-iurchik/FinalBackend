@@ -71,58 +71,58 @@ FinalBackend/
 
 ```mermaid
 erDiagram
-  Catalogo {
-    int idCatalogo PK
-    string titulo
-    string resumen
-    int? duracion
-    int? temporadas
-    string? busqueda
-    int idPosterCatalogo FK
-    int idTrailerCatalogo FK
-    int idCategoriaCatalogo FK
-    int idGeneroCatalogo FK
-  }
-  Categoria {
-    int idCategoria PK
-    string categoriaName
-  }
-  Genero {
-    int idGenero PK
-    string generoName
-  }
-  Actor {
-    int idActor PK
-    string actorName
-  }
-  Tag {
-    int idTag PK
-    string tagName
-  }
-  Poster {
-    int idPoster PK
-    string posterName
-  }
-  Trailer {
-    int idTrailer PK
-    string trailerName
-  }
-  CatalogoTag {
-    int idCatalogo PK, FK
-    int idTag PK, FK
-  }
-  Reparto {
-    int idCatalogo PK, FK
-    int idActor PK, FK
-  }
-  Catalogo ||--o{ CatalogoTag : ""
-  Tag ||--o{ CatalogoTag : ""
-  Catalogo ||--o{ Reparto : ""
-  Actor ||--o{ Reparto : ""
-  Catalogo }o--|| Categoria : ""
-  Catalogo }o--|| Genero : ""
-  Catalogo }o--|| Poster : ""
-  Catalogo }o--|| Trailer : ""
+  Catalogo {
+    int idCatalogo PK
+    string titulo
+    string resumen
+    int duracion
+    int temporadas
+    string busqueda
+    int idPosterCatalogo FK
+    int idTrailerCatalogo FK
+    int idCategoriaCatalogo FK
+    int idGeneroCatalogo FK
+  }
+  Categoria {
+    int idCategoria PK
+    string categoriaName
+  }
+  Genero {
+    int idGenero PK
+    string generoName
+  }
+  Actor {
+    int idActor PK
+    string actorName
+  }
+  Tag {
+    int idTag PK
+    string tagName
+  }
+  Poster {
+    int idPoster PK
+    string posterName
+  }
+  Trailer {
+    int idTrailer PK
+    string trailerName
+  }
+  CatalogoTag {
+    int idCatalogo PK, FK
+    int idTag PK, FK
+  }
+  Reparto {
+    int idCatalogo PK, FK
+    int idActor PK, FK
+  }
+  Catalogo ||--o{ CatalogoTag : ""
+  Tag ||--o{ CatalogoTag : ""
+  Catalogo ||--o{ Reparto : ""
+  Actor ||--o{ Reparto : ""
+  Catalogo }o--|| Categoria : ""
+  Catalogo }o--|| Genero : ""
+  Catalogo }o--|| Poster : ""
+  Catalogo }o--|| Trailer : ""
 ```
 
 ### 🗄️ Tablas y Relaciones
@@ -246,13 +246,14 @@ Crea un archivo `.env` en `src/config/` con estos valores.
 ## 🔄 Diagrama de Flujo de la API
 
 ```mermaid
+
 flowchart TD
-    A[Cliente (Postman/Frontend)] -->|Request HTTP| B[Servidor Express]
-    B -->|Consulta| C[Sequelize ORM]
-    C -->|Query| D[(MySQL)]
-    D -->|Datos| C
-    C -->|Objeto JS| B
-    B -->|Response JSON| A
+A[Cliente (Postman/Frontend)] --> B[Servidor Express]
+B --> C[Sequelize ORM]
+C --> D[Base de Datos MySQL]
+D --> C
+C --> B
+B --> A
 ```
 
 ## Endpoints REST
