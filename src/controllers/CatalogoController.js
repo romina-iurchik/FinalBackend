@@ -13,22 +13,24 @@ const CatalogoController = {}
   CatalogoController.listadoCatalogo = async (req, res) => {
     try {
       const listado = await Catalogo.findAll({
+      attributes: {
+        exclude: ['idGeneroCatalogo', 'idCategoriaCatalogo', 'idPosterCatalogo', 'idTrailerCatalogo']
+      },
       include: [
         {
-          model: Categoria, attributes: ['categoriaName'],
+          model: Categoria, attributes: ['categoriaName']
         },
         {
-          model: Genero, attributes: ['generoName'],
+          model: Genero, attributes: ['generoName']
         },
         {
-          model: Tag,
-          attributes: ['tagName'],through: { attributes: [] }, // Ocultamos la tabla intermedia CatalogoTag
+          model: Tag, attributes: ['tagName'] // Ocultamos la tabla intermedia CatalogoTag
         },
         {
-          model: Actor, attributes: ['actorName'], through: { attributes: [] }, // Ocultamos la tabla intermedia Reparto
+          model: Actor, attributes: ['actorName'] // Ocultamos la tabla intermedia Reparto
         },
         {
-          model: Poster, attributes: ['posterName'],
+          model: Poster, attributes: ['posterName']
         },
         {
           model: Trailer, attributes: ['trailerName']
@@ -43,7 +45,7 @@ const CatalogoController = {}
       console.error("Error al consultar el catalogo de Trailerflix", error);
       res.status(500).json({ error: error.message });
     }
-  };
+  } ;
 
 //busco por genero
   CatalogoController.buscoPorTag = async (req,res) => {

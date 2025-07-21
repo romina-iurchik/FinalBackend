@@ -7,11 +7,11 @@ const PORT = process.env.PORT || 3000;
 
 const cors = require("cors"); // conectar back y front con react
 
-const { authenticate } = require('./src/config/sequelize');
+const { authenticate } = require('./config/sequelize'); 
 
 app.use(express.json());
 //ROUTES
-const indexRutas = require('./src/routes/index.routes');
+const indexRutas = require('./routes/index.routes');
 app.use('/',indexRutas);
 
 //middleware
@@ -26,5 +26,6 @@ authenticate()
   .catch(err => {
     console.error('Error al conectar a la bbdd:', err);
   });
+
 
 

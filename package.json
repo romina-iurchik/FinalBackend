@@ -4,8 +4,8 @@
   "description": "- 🎐 Beverly J.L. Gonzalez\r - 🎐 Romina Iurchik\r - 🎐 Mariana Jobse",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch src/app.js",
+    "end": "kill all -9 node"
   },
   "repository": {
     "type": "git",
