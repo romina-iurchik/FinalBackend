@@ -1,4 +1,4 @@
-const { Catalogo, Tag, CatalogoTag, Reparto, Actor, Categoria, Genero, Trailer, Poster } = require('../../models/Asociaciones');
+const { Catalogo, Tag, Actor, Categoria, Genero, Trailer, Poster } = require('../../models/Asociaciones');
 
 module.exports = async (req, res) => {
     try {
