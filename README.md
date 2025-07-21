@@ -148,8 +148,8 @@ erDiagram
 > Agregar aquí img de resultados de consultas en MySQL Workbench:
 
 - ![Consulta: ver todo el contenido](./src/img/consultaSelectAll.png)
-- ![Consulta: películas por género](./src/img/ejemplo_peliculas_genero.png)
-- ![Consulta: series por actor](./src/img/ejemplo_series_actor.png)
+- ![Consulta: películas por género](./src/img/1.png)
+- ![Consulta: series por actor](./src/img/7.png)
 
 ## 📝 Ejemplos de Consultas
 
