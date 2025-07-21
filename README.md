@@ -40,3 +40,138 @@ Para ver si los datos se exportaron bien se crea la consulta: `veo_todoelconteni
 
 
 # 🧮 Parte 2: Consultas SQL
+
+
+🔗 Endpoints
+
+| Método | Ruta                  | Descripción                                |
+| ------ | --------------------- | -------------------------------------------|
+| GET    | /catalogo             | Lista el catálogo completo de Trailerflix  |
+| GET    | /categoria/:categoria | Lista el catálogo por categoría            |             
+| GET    | /titulo/:titulo       | Busca dentro del catálogo por título       |          
+
+---
+
+## 💡 Ejemplos de uso
+
+### 🔍 GET `/catalogo`
+
+**Request:**
+
+```
+GET http://localhost:3010/catalogo
+```
+
+**Parámetros**: No requiere.
+
+**Respuesta:**
+
+- `200 OK`: Lista Catalogo de Trailerflix.
+- `500 Internal Server Error`: Error al conectarse a la base de datos.
+
+```json
+[
+  {
+    "idCatalogo": 1,
+    "titulo": "The Crown",
+    "resumen": "Este drama narra las rivalidades políticas y el romance de la reina Isabel II, así como los sucesos que moldearon la segunda mitad del siglo XX.",
+    "duracion": null,
+    "temporadas": 4,
+    "busqueda": null,
+    "Categorium": {
+      "categoriaName": "Serie"
+    },
+    "Genero": {
+      "generoName": "Suceso Real"
+    },
+    "Tags": [
+      {
+        "tagName": "Drama"
+      },
+      {
+        "tagName": "Suceso Real"
+      }
+    ],
+    "Actors": [
+      {
+        "actorName": "Claire Fox"
+      },
+      {
+        "actorName": "Olivia Colman"
+      },
+      {
+        "actorName": "Matt Smith"
+      },
+      {
+        "actorName": "Tobias Menzies"
+      },
+      {
+        "actorName": "Vanesa Kirby"
+      },
+      {
+        "actorName": "Helena Bonham Carter"
+      }
+    ],
+    "Poster": {
+      "posterName": "./posters/1.jpg"
+    },
+    "Trailer": {
+      "trailerName": "https://www.youtube.com/embed/JWtnJjn6ng0"
+    }
+  },
+  {
+    "idCatalogo": 2,
+    "titulo": "Riverdale",
+    "resumen": "El paso a la edad adulta incluye sexo, romance, escuela y familia. Para Archie y sus amigos, también hay misterios oscuros.",
+    "duracion": null,
+    "temporadas": 5,
+    "busqueda": null,
+    "Categorium": {
+      "categoriaName": "Serie"
+    },
+    "Genero": {
+      "generoName": "Drama"
+    },
+    "Tags": [
+      {
+        "tagName": "Drama"
+      },
+      {
+        "tagName": "Ficción"
+      },
+      {
+        "tagName": "Misterio"
+      }
+    ],
+    "Actors": [
+      {
+        "actorName": "Lili Reinhart"
+      },
+      {
+        "actorName": "Casey Cott"
+      },
+      {
+        "actorName": "Camila Mendes"
+      },
+      {
+        "actorName": "Marisol Nichols"
+      },
+      {
+        "actorName": "Madelaine Petsch"
+      },
+      {
+        "actorName": "Mädchen Amick"
+      }
+    ],
+    "Poster": {
+      "posterName": "./posters/2.jpg"
+    },
+    "Trailer": {
+      "trailerName": "https://www.youtube.com/embed/HxtLlByaYTc"
+    }
+  },
+  ...
+]
+```
+
+---
