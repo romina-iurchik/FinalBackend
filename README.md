@@ -68,7 +68,7 @@ FinalBackend/
 - [Ver diagrama en DB Designer](https://dbdesigner.page.link/8d4K7rnqkLx5UngQ6)
 
 ### 🖼️ Diagrama Mermaid del Modelo Relacional
-
+***
 ```mermaid
 erDiagram
   Catalogo {
@@ -124,7 +124,7 @@ erDiagram
   Catalogo }o--|| Poster : ""
   Catalogo }o--|| Trailer : ""
 ```
-
+***
 ### 🗄️ Tablas y Relaciones
 
 - **Tablas principales:**  
@@ -247,13 +247,14 @@ Crea un archivo `.env` en `src/config/` con estos valores.
 
 ```mermaid
 
-flowchart TD
-A[Cliente (Postman/Frontend)] --> B[Servidor Express]
-B --> C[Sequelize ORM]
-C --> D[Base de Datos MySQL]
-D --> C
-C --> B
-B --> A
+%% Diagrama de Flujo de la API
+graph TD
+  A[Cliente = Postman/Frontend] --> B[Servidor Express]
+  B --> C[Sequelize ORM]
+  C --> D[Base de Datos MySQL]
+  D --> C
+  C --> B
+  B --> A
 ```
 
 ## Endpoints REST
