@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     res.json(formato);
 
     } catch (error) {
-    console.error("Error al consultar el catalogo de Trailerflix", error);
+    console.error("😵‍💫 Error al consultar el catalogo de Trailerflix 😵‍💫", error);
     res.status(500).json({ error: error.message });
     }
 };
