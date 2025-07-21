@@ -1,11 +1,12 @@
+const { Op } = require('sequelize');
 const { Catalogo }  = require('../../models/Asociaciones');
 
 module.exports = async (req, res) => {
 
     const busqueda = req.params.titulo;
     try {
-        const pelicula = await Catalogo.findOne(
-            {   where : {titulo: busqueda},
+        const pelicula = await Catalogo.findAll(
+            {   where :{titulo: {[Op.like]: `%${busqueda}%`}} ,
                 attributes: [ 'titulo', 'resumen'] 
         });
         if (!pelicula){
@@ -17,3 +18,9 @@ module.exports = async (req, res) => {
         res.status(500).json({ error: 'Error al querer realizar la busqueda.' });
     }
 };
+
+/**
+ * SELECT c.titulo, c.resumen
+FROM Catalogo c
+WHERE c.titulo LIKE '%s%'; 
+*/
