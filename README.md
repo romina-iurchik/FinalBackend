@@ -410,9 +410,3 @@ graph TD
 - Si tienes dudas, revisa los scripts y modelos en la carpeta `src/`.
 - Para cualquier consulta, revisa la documentación incluida o contacta a los integrantes del equipo.
 
----
-
-> **Autoras:**  
-> 🎐 Beverly J. L. Gonzalez Casanova  
-> 🎐 Romina del Carmen Iurchik  
-> 🎐 Mariana Jobse
