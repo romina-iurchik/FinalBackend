@@ -145,7 +145,7 @@ erDiagram
 
 ## 📸 Imágenes de Consultas
 
-> Agregar aquí img de resultados de consultas en MySQL Workbench:
+> Resultados de consultas en MySQL Workbench:
 
 - ![Consulta: ver todo el contenido](./src/img/consultaSelectAll.png)
 - ![Consulta: series por actor](./src/img/ejercicios/7.png)
