@@ -4,7 +4,7 @@
   "description": "- 🎐 Beverly J.L. Gonzalez\r - 🎐 Romina Iurchik\r - 🎐 Mariana Jobse",
   "main": "server.js",
   "scripts": {
-    "start": "node --watch src/app.js",
+    "start": "node src/app.js",
     "end": "kill all -9 node"
   },
   "repository": {

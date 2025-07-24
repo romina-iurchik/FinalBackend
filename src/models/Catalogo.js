@@ -14,7 +14,7 @@ const Catalogo = sequelize.define(
     },
     resumen: { type: DataTypes.TEXT, allowNull: false },
     duracion: {
-      type: DataTypes.TIME,
+      type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: null,
     },
