@@ -68,63 +68,63 @@ FinalBackend/
 - [Ver diagrama en DB Designer](https://dbdesigner.page.link/8d4K7rnqkLx5UngQ6)
 
 ### 🖼️ Diagrama Mermaid del Modelo Relacional
-
+***
 ```mermaid
 erDiagram
-  Catalogo {
-    int idCatalogo PK
-    string titulo
-    string resumen
-    int? duracion
-    int? temporadas
-    string? busqueda
-    int idPosterCatalogo FK
-    int idTrailerCatalogo FK
-    int idCategoriaCatalogo FK
-    int idGeneroCatalogo FK
-  }
-  Categoria {
-    int idCategoria PK
-    string categoriaName
-  }
-  Genero {
-    int idGenero PK
-    string generoName
-  }
-  Actor {
-    int idActor PK
-    string actorName
-  }
-  Tag {
-    int idTag PK
-    string tagName
-  }
-  Poster {
-    int idPoster PK
-    string posterName
-  }
-  Trailer {
-    int idTrailer PK
-    string trailerName
-  }
-  CatalogoTag {
-    int idCatalogo PK, FK
-    int idTag PK, FK
-  }
-  Reparto {
-    int idCatalogo PK, FK
-    int idActor PK, FK
-  }
-  Catalogo ||--o{ CatalogoTag : ""
-  Tag ||--o{ CatalogoTag : ""
-  Catalogo ||--o{ Reparto : ""
-  Actor ||--o{ Reparto : ""
-  Catalogo }o--|| Categoria : ""
-  Catalogo }o--|| Genero : ""
-  Catalogo }o--|| Poster : ""
-  Catalogo }o--|| Trailer : ""
+  Catalogo {
+    int idCatalogo PK
+    string titulo
+    string resumen
+    int duracion
+    int temporadas
+    string busqueda
+    int idPosterCatalogo FK
+    int idTrailerCatalogo FK
+    int idCategoriaCatalogo FK
+    int idGeneroCatalogo FK
+  }
+  Categoria {
+    int idCategoria PK
+    string categoriaName
+  }
+  Genero {
+    int idGenero PK
+    string generoName
+  }
+  Actor {
+    int idActor PK
+    string actorName
+  }
+  Tag {
+    int idTag PK
+    string tagName
+  }
+  Poster {
+    int idPoster PK
+    string posterName
+  }
+  Trailer {
+    int idTrailer PK
+    string trailerName
+  }
+  CatalogoTag {
+    int idCatalogo PK, FK
+    int idTag PK, FK
+  }
+  Reparto {
+    int idCatalogo PK, FK
+    int idActor PK, FK
+  }
+  Catalogo ||--o{ CatalogoTag : ""
+  Tag ||--o{ CatalogoTag : ""
+  Catalogo ||--o{ Reparto : ""
+  Actor ||--o{ Reparto : ""
+  Catalogo }o--|| Categoria : ""
+  Catalogo }o--|| Genero : ""
+  Catalogo }o--|| Poster : ""
+  Catalogo }o--|| Trailer : ""
 ```
-
+***
 ### 🗄️ Tablas y Relaciones
 
 - **Tablas principales:**  
@@ -145,9 +145,10 @@ erDiagram
 
 ## 📸 Imágenes de Consultas
 
+> Agregar aquí img de resultados de consultas en MySQL Workbench:
+
 - ![Consulta: ver todo el contenido](./src/img/consultaSelectAll.png)
-- ![Consulta: películas por género](./src/img/ejemplo_peliculas_genero.png)
-- ![Consulta: series por actor](./src/img/ejemplo_series_actor.png)
+- ![Consulta: series por actor](./src/img/ejercicios/7.png)
 
 ## 📝 Ejemplos de Consultas
 
@@ -244,13 +245,15 @@ Crea un archivo `.env` en `src/config/` con estos valores.
 ## 🔄 Diagrama de Flujo de la API
 
 ```mermaid
-flowchart TD
-    A[Cliente (Postman/Frontend)] -->|Request HTTP| B[Servidor Express]
-    B -->|Consulta| C[Sequelize ORM]
-    C -->|Query| D[(MySQL)]
-    D -->|Datos| C
-    C -->|Objeto JS| B
-    B -->|Response JSON| A
+
+%% Diagrama de Flujo de la API
+graph TD
+  A[Cliente = Postman/Frontend] --> B[Servidor Express]
+  B --> C[Sequelize ORM]
+  C --> D[Base de Datos MySQL]
+  D --> C
+  C --> B
+  B --> A
 ```
 
 ## Endpoints REST
@@ -406,10 +409,3 @@ flowchart TD
 - Recuerda poblar correctamente la base de datos para que los endpoints funcionen.
 - Si tienes dudas, revisa los scripts y modelos en la carpeta `src/`.
 - Para cualquier consulta, revisa la documentación incluida o contacta a los integrantes del equipo.
-
----
-
-> **Autoras:**  
-> 🎐 Beverly J. L. Gonzalez Casanova  
-> 🎐 Romina del Carmen Iurchik  
-> 🎐 Mariana Jobse
