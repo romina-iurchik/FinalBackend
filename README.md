@@ -145,7 +145,7 @@ erDiagram
 
 ## 📸 Imágenes de Consultas
 
-> Agregar aquí img de resultados de consultas en MySQL Workbench:
+> Resultados de consultas en MySQL Workbench:
 
 - ![Consulta: ver todo el contenido](./src/img/consultaSelectAll.png)
 - ![Consulta: series por actor](./src/img/ejercicios/7.png)
@@ -409,4 +409,3 @@ graph TD
 - Recuerda poblar correctamente la base de datos para que los endpoints funcionen.
 - Si tienes dudas, revisa los scripts y modelos en la carpeta `src/`.
 - Para cualquier consulta, revisa la documentación incluida o contacta a los integrantes del equipo.
-

@@ -18,3 +18,4 @@ module.exports = CatalogoTag;
 //`idCatalogo` int NOT NULL,
 //`idTag` int NOT NULL,
 //PRIMARY KEY (`idCatalogo`, `idTag`)
+
