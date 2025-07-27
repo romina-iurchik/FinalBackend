@@ -21,9 +21,6 @@ app.use((req, res) =>{res.status(404).send('↗️ Ruta no encontrada ↙️')})
 
 authenticate()
   .then(() => {
-    return sequelize.sync({ alter: true }) // sincronisa modelos con la base
-  })
-  .then(() => {
     app.listen(PORT, () => console.log(`Servidor funcionando en http://localhost:${PORT}`));
   })
   .catch(err => {
